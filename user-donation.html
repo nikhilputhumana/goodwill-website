@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>GoodWill</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/dh-header-non-rectangular.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Right-Links.css">
+    <link rel="stylesheet" href="assets/css/News-Cards.css">
+    <link rel="stylesheet" href="assets/css/don-style.css">
+    
+</head>
+
+<body>
+    <div >
+        <nav class="navbar navbar-light navbar-expand-md py-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img class="img-fluid image1" src="assets/img/logo-removebg-preview.png">
+                </a>
+                <div class="collapse navbar-collapse" id="navcol-2">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"></li>
+                        <li class="nav-item"></li>
+                    </ul>
+                    <a class="btn btn-primary ms-md-2 logout" role="button" href="index.html">LOGOUT</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <h1>Welcome to Donation Page</h1>
+        <div class="text-center">
+            <select class="mt-5 btn btn-primary dropdown-toggle text-center cat" id="target">
+                <option class="item" disabled selected>Select Category</option>
+                <option class="dropdown-item item" value="content_1">Clothes</option>
+                <option class="dropdown-item item" value="content_2">Food</option>    
+            <select>
+        </div>
+        
+        <div id="content_1" class="inv">
+
+            <form class="m-4">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Gender:</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">                     
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                            <label class="form-check-label" for="inlineRadio3">Unisex</label>
+                        </div>
+                    </div>
+                </div>                
+
+                <div class="form-group row mt-2">
+                  <label for="item" class="col-sm-2 col-form-label">Item</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="item" placeholder="Enter the item">
+                  </div>
+                </div>
+
+                <div class="form-group row mt-2">
+                    <label for="quant" class="col-sm-2 col-form-label">Quantity</label>
+                    <div class="col-sm-3">
+                      <input type="number" class="form-control" id="item" placeholder="Number of items available">
+                    </div>
+                </div>
+                
+                <div class="form-group row form-row mt-3">
+                  <label for="size" class="col-sm-2 col-form-label">Size</label>
+                  <div class="col-sm-2">
+                    <select class="btn btn-light ">
+                        <option selected>select</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                      </select>
+                  </div>
+                                    
+                  OR
+                  
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control" id="item" placeholder="in inches">
+                  </div>
+
+                  OR
+
+                  <div class="custom-control custom-checkbox col-sm-2">
+                    <input type="checkbox" class="custom-control-input checkbx" id="freesize">
+                    <label class="custom-control-label checklb" for="freesize">Free size</label>
+                  </div>                  
+                </div>
+                
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success text-center">Submit</button>
+                </div>            
+            </form>
+        </div>
+        
+        <div id="content_2" class="inv mb-5">
+
+            <form class="m-4">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Type: </label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">                     
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Packed</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">Unpacked</label>
+                        </div>                    
+                    </div>
+                </div>                
+
+                <div class="form-group row mt-2">
+                  <label for="item" class="col-sm-2 col-form-label">Item</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="item" placeholder="Enter the food item">
+                  </div>
+                </div>
+
+                <div class="form-group row mt-2">
+                    <label for="quant" class="col-sm-2 col-form-label">Quantity</label>
+                    <div class="col-sm-5">
+                      <input type="number" class="form-control" id="item" placeholder="Quantity available (in packets or plates)">
+                    </div>
+                </div>
+
+                <div class="form-group row mt-2">
+                    <label for="man-date" class="col-sm-2 col-form-label">Manufacturing date</label>
+                    <div class="col-sm-2">                    
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="col-sm-2">                    
+                        <input type="time" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group row mt-2">
+                    <label for="exp-date" class="col-sm-2 col-form-label">Expiry date</label>
+                    <div class="col-sm-2">                    
+                      <input type="date" class="form-control">
+                    </div>
+                    <div class="col-sm-2">                    
+                        <input type="time" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success text-center">Submit</button>
+                </div>            
+            </form>
+
+        </div>
+
+    </div>
+    
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/donation.js"></script>
+</body>
+
+</html>

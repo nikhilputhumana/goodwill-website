@@ -1,0 +1,46 @@
+body {
+    background: #a0fff9;
+    font-family: Roboto, sans-serif;
+}
+
+.image1 {
+    width: 149px;
+    height: 87px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+.logout {
+    font-family: Roboto, sans-serif;
+    border-radius: 20px;
+    width: 156.896px;
+    height: 42px;
+    padding-top: 9px;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 28px;
+    text-shadow: 2px 5px 8px rgba(0,0,0,0.34);
+    text-align: center;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 2px 5px 8px rgba(0,0,0,0.34);
+    text-align: center;
+}
+
+.tble {
+    background: rgba(255,255,255,0.54);
+    border-radius: 15px;
+    box-shadow: 2px 4px 10px 0px rgba(0,0,0,0.63);
+}
+
+.subhead {
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: 2px 5px 8px rgba(0,0,0,0.34);
+    text-align: left;   
+}

@@ -1,0 +1,56 @@
+body {
+    background: #a0fff9;
+}
+
+.image1 {
+    width: 149px;
+    height: 87px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+.logout {
+    font-family: Roboto, sans-serif;
+    border-radius: 20px;
+    width: 156.896px;
+    height: 42px;
+    padding-top: 9px;
+}
+
+h1 {
+    color: rgb(0,0,0);font-family: Roboto, sans-serif;font-weight: bold;font-size: 40px;box-shadow: 0px 0px;text-shadow: 2px 5px 8px rgba(0,0,0,0.34);text-align: center;margin-right: 0;margin-top: 48px;
+}
+
+.cat {
+    background: rgb(255,255,255);
+    color: rgb(0,0,0);
+    box-shadow: 0px 0px 4px 0px;
+    font-size: 18px;
+}
+
+.item {
+    text-align: center;
+    background-color: white;
+     
+}
+
+.inv {
+    display: none;
+}
+
+.checkbx {
+    height: 17px;
+    width: 17px;   
+}
+
+.checklb {
+    font-size: larger;
+}
+
+#content_1 {
+    margin-bottom: 5%;
+}
+
+#content_2 {
+    margin-bottom: 5%;
+}
