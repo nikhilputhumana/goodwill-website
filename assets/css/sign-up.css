@@ -1,0 +1,27 @@
+body {
+    font-family: Poppins, sans-serif;
+}
+
+.image1 {
+    width: 149px;
+    height: 87px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.content-box {
+    background-color: #a0fff9;
+    box-shadow: 2px 4px 4px rgba(35, 38, 41, 0.402);
+    border-radius: 10px;
+}
+
+.nav-head {
+    font-size: 28px;
+    color: rgb(73, 80, 87);
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+}
