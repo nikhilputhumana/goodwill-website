@@ -1,6 +1,9 @@
 body {
-    background: #a0fff9;
     font-family: Roboto, sans-serif;
+}
+
+.back {
+    background: linear-gradient(#a0fff9, white), #a0fff9;
 }
 
 .image1 {
@@ -32,17 +35,27 @@ h1 {
     text-align: center;
 }
 
-.tble {
-    background: rgba(255, 255, 255, 0.54);
-    border-radius: 15px;
-    box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.63);
-}
-
-.subhead {
-    font-weight: bold;
+h2 {
+    font-weight: 540;
     font-size: 30px;
-    text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.34);
-    text-align: left;
 }
 
+.dp {
+    margin-top: 24px;
+    height: 153px;
+    width: 150px;
+    border-radius: 75px;    
+}
 
+.don-but {
+    width: 159.5875px;
+    border-radius: 6px;
+    background: rgb(6,208,148);
+    box-shadow: 1px 6px 10px 0px rgb(1,3,3);
+}
+
+.tble {
+    background: rgba(255,255,255,0.54);
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.30);
+}

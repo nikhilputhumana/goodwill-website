@@ -1,0 +1,18 @@
+body {
+    background: #a0fff9;
+    font-family: Roboto, sans-serif;
+}
+
+.image1 {
+    width: 149px;
+    height: 87px;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.34);
+    text-align: center;
+}
