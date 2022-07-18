@@ -77,14 +77,14 @@
                 <div class="form-group row mt-2">
                     <label for="quant" class="col-sm-2 col-form-label">Quantity</label>
                     <div class="col-sm-3">
-                      <input type="number" class="form-control" id="item" placeholder="Number of items available">
+                      <input type="number" class="form-control" id="quantity" placeholder="Number of items available">
                     </div>
                 </div>
                 
                 <div class="form-group row form-row mt-3">
                   <label for="size" class="col-sm-2 col-form-label">Size</label>
                   <div class="col-sm-2">
-                    <select class="btn btn-light ">
+                    <select id="sizeselect" class="btn btn-light ">
                         <option selected>select</option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
@@ -98,7 +98,7 @@
                   OR
                   
                   <div class="col-sm-2">
-                    <input type="number" class="form-control" id="item" placeholder="in inches">
+                    <input type="number" class="form-control" id="sizeininches" placeholder="in inches">
                   </div>
 
                   OR
@@ -110,7 +110,7 @@
                 </div>
                 
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-success text-center">Submit</button>
+                    <button onclick="clothsubmit()" type="submit" class="btn btn-success text-center">Submit</button>
                 </div>            
             </form>
         </div>
@@ -167,7 +167,7 @@
                 </div>
                 
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-success text-center">Submit</button>
+                    <button onclick='foodsubmit()' type="submit" class="btn btn-success text-center">Submit</button>
                 </div>            
             </form>
 
@@ -175,9 +175,19 @@
 
     </div>
     
+    <script>
+        var val = document.getElementById("mySelect").form.id;
+        document.write("<br>Form id with dropdown: "+val);
+     </script>
+
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/donation.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="user-donation.js"></script>
 </body>
 
 </html>
