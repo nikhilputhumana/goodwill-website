@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>GoodWill</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&amp;display=swap">
@@ -48,21 +49,18 @@
         
         <div id="content_1" class="inv">
 
-            <form class="m-4">
+            <form class="m-4" id="clothForm">
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Gender:</label>
+                    <label class="col-sm-2 col-form-label" id="gender">Gender:</label>
                     <div class="col-sm-10">
                         <div class="form-check form-check-inline">                     
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                            <input class="form-check-input" type="radio" name="gender" value="male" required>Male
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                            <input class="form-check-input" type="radio" name="gender" value="female">Female
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                            <label class="form-check-label" for="inlineRadio3">Unisex</label>
+                            <input class="form-check-input" type="radio" name="gender" value="unisex">Unisex
                         </div>
                     </div>
                 </div>                
@@ -70,44 +68,49 @@
                 <div class="form-group row mt-2">
                   <label for="item" class="col-sm-2 col-form-label">Item</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="item" placeholder="Enter the item">
+                    <input type="text" class="form-control" id="citem" placeholder="Enter the item" required>
                   </div>
                 </div>
 
                 <div class="form-group row mt-2">
                     <label for="quant" class="col-sm-2 col-form-label">Quantity</label>
                     <div class="col-sm-3">
-                      <input type="number" class="form-control" id="quantity" placeholder="Number of items available">
+                      <input type="number" class="form-control" id="cquantity" placeholder="Number of items available" required>
+                    </div>
+
+                    <label for="size" class="col-sm-2 col-form-label">Size</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="size" placeholder="Enter size" required>
+                  </div>    
+                </div>
+
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="cname" placeholder="Enter name of donator" required>
                     </div>
                 </div>
-                
-                <div class="form-group row form-row mt-3">
-                  <label for="size" class="col-sm-2 col-form-label">Size</label>
-                  <div class="col-sm-2">
-                    <select id="sizeselect" class="btn btn-light ">
-                        <option selected>select</option>
-                        <option value="XS">XS</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                      </select>
-                  </div>
-                                    
-                  OR
-                  
-                  <div class="col-sm-2">
-                    <input type="number" class="form-control" id="sizeininches" placeholder="in inches">
+
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Phone number</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="cnumber" placeholder="Enter the contact number" required>
+                    </div>
                   </div>
 
-                  OR
-
-                  <div class="custom-control custom-checkbox col-sm-2">
-                    <input type="checkbox" class="custom-control-input checkbx" id="freesize">
-                    <label class="custom-control-label checklb" for="freesize">Free size</label>
-                  </div>                  
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="caddress" placeholder="Enter the address of donator" required>
+                    </div>
                 </div>
+
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Pincode</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="cpincode" placeholder="Enter pincode" required>
+                    </div>
+                  </div>
                 
                 <div class="text-center mt-3">
                     <button onclick="clothsubmit()" type="submit" class="btn btn-success text-center">Submit</button>
@@ -115,19 +118,19 @@
             </form>
         </div>
         
+        
+        <!---------------------------------- FOOD --------------------------------------->
+        
         <div id="content_2" class="inv mb-5">
-
-            <form class="m-4">
+            <form class="m-4" id="foodForm">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Type: </label>
                     <div class="col-sm-10">
                         <div class="form-check form-check-inline">                     
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Packed</label>
+                            <input class="form-check-input" type="radio" name="foodtype" value="Packed">Packed
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">Unpacked</label>
+                            <input class="form-check-input" type="radio" name="foodtype" value="Unpacked">Unpacked
                         </div>                    
                     </div>
                 </div>                
@@ -135,45 +138,73 @@
                 <div class="form-group row mt-2">
                   <label for="item" class="col-sm-2 col-form-label">Item</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="item" placeholder="Enter the food item">
+                    <input type="text" class="form-control" id="fitem" placeholder="Enter the food item">
                   </div>
                 </div>
 
                 <div class="form-group row mt-2">
                     <label for="quant" class="col-sm-2 col-form-label">Quantity</label>
                     <div class="col-sm-5">
-                      <input type="number" class="form-control" id="item" placeholder="Quantity available (in packets or plates)">
+                      <input type="number" class="form-control" id="fquantity" placeholder="Quantity available (in number/ packets/ plates)">
                     </div>
                 </div>
 
                 <div class="form-group row mt-2">
                     <label for="man-date" class="col-sm-2 col-form-label">Manufacturing date</label>
                     <div class="col-sm-2">                    
-                      <input type="date" class="form-control">
+                      <input type="date" class="form-control" id="mandate">
                     </div>
                     <div class="col-sm-2">                    
-                        <input type="time" class="form-control">
+                        <input type="time" class="form-control" id="mantime">
                     </div>
                 </div>
 
                 <div class="form-group row mt-2">
                     <label for="exp-date" class="col-sm-2 col-form-label">Expiry date</label>
                     <div class="col-sm-2">                    
-                      <input type="date" class="form-control">
+                      <input type="date" class="form-control" id="expdate">
                     </div>
                     <div class="col-sm-2">                    
-                        <input type="time" class="form-control">
+                        <input type="time" class="form-control" id="exptime">
                     </div>
                 </div>
+
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="fname" placeholder="Enter name of donator" required>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Phone number</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="fnumber" placeholder="Enter the contact number" required>
+                    </div>
+                  </div>
+
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="faddress" placeholder="Enter the address of donator" required>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-2">
+                    <label for="item" class="col-sm-2 col-form-label">Pincode</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="fpincode" placeholder="Enter pincode" required>
+                    </div>
+                  </div>
                 
                 <div class="text-center mt-3">
                     <button onclick='foodsubmit()' type="submit" class="btn btn-success text-center">Submit</button>
-                </div>            
-            </form>
+                </div>   
 
+            </form>
         </div>
 
-    </div>
+    </div> 
     
     <script>
         var val = document.getElementById("mySelect").form.id;
