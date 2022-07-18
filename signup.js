@@ -18,8 +18,12 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
+
+//------------------- USER ---------------------------------
 //register function defination from signup page
-function register() {
+function registeruser() {
+
+  console.log("User function called")
 
   var email= document.getElementById('email1').value
   var password= document.getElementById('password1').value
@@ -29,6 +33,21 @@ function register() {
   var district = document.getElementById('inputDisrict').value
   var pincode = document.getElementById('inputZip').value
 
+  if (validate_email(email) == false || validate_password(password) == false) {
+    alert('Invalid Email or Password')
+    return
+  }
+
+  if (validate_phone(phone) == false) {
+    alert('Invalid Phone number')
+    return
+  }
+
+  if (validate_field(address && inputName && district && pincode) == false) {
+    alert('Fill out the missing fields!')
+    return
+  }
+
 
   auth.createUserWithEmailAndPassword(email, password)
     .then(function () {
@@ -36,6 +55,7 @@ function register() {
       var database_ref = database.ref()
       var user_data = {
         email: email,
+        password: password,
         address: address,
         name: inputName,
         phone: phone,
@@ -44,7 +64,8 @@ function register() {
         last_login: Date.now()
       }
       database_ref.child('users/' + user.uid).set(user_data)
-      alert('User Created')
+      alert('User Registered \n\nPlease login to continue');
+      window.location.replace('./login.html');
     })
     .catch(function (error) {
       var error_code = error.code
@@ -52,9 +73,80 @@ function register() {
 
       alert(error_message)
     })
+
+}
+
+//-------------------------ORGANISATION----------------------------
+
+function registerorg() {
+
+  console.log("Organisation function called");
+
+  var email= document.getElementById('orgEmail').value
+  var password= document.getElementById('orgPassword').value
+  var address = document.getElementById('orgAddress').value
+  var inputName = document.getElementById('orgName').value
+  var phone = document.getElementById('orgPhone').value
+  var district = document.getElementById('orgDisrict').value
+  var pincode = document.getElementById('orgZip').value
+  var registernum = document.getElementById('orgReg').value
+
+  if (validate_email(email) == false || validate_password(password) == false) {
+    alert('Invalid Email or Password')
+    return
+  }
+
+  if (validate_phone(phone) == false) {
+    alert('Invalid Phone number')
+    return
+  }
+
+  if (validate_field(address && inputName && district && pincode && registernum) == false) {
+    alert('Fill out the missing fields!')
+    return
+  }
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(function () {
+      var user = auth.currentUser
+      var database_ref = database.ref()
+      var user_data = {
+        email: email,
+        password: password,
+        address: address,
+        name: inputName,
+        phone: phone,
+        district: district,
+        pincode: pincode,
+        registernum: registernum,
+        last_login: Date.now()
+      }
+
+      if (validate_email(email) == false || validate_password(password) == false) {
+        alert('Invalid Email or Password')
+        return
+      }
+    
+      if (validate_phone(phone) == false) {
+        alert('Invalid Phone number')
+        return
+      }
+      
+      database_ref.child('orgs/' + user.uid).set(user_data)
+      alert('Organisation Registered \n\nPlease Login to continue')
+      window.location.replace('./login.html');
+    })
+    .catch(function (error) {
+      var error_code = error.code
+      var error_message = error.message
+
+      alert(error_message)
+    })
+
 }
 
 
+// --- functions for validation ---
 
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/
@@ -79,6 +171,18 @@ function validate_field(field) {
   }
 
   if (field.length <= 0) {
+    return false
+  } else {
+    return true
+  }
+}
+
+function validate_phone(num) {
+  if (num == null) {
+    return false
+  }
+
+  if (num.length < 10) {
     return false
   } else {
     return true

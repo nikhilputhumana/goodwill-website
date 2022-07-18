@@ -1,5 +1,6 @@
 body {
     font-family: Poppins, sans-serif;
+    background-color: #f3fffe;
 }
 
 .image1 {
@@ -13,6 +14,9 @@ body {
     background-color: #a0fff9;
     box-shadow: 2px 4px 4px rgba(35, 38, 41, 0.402);
     border-radius: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
 }
 
 .nav-head {
@@ -22,6 +26,14 @@ body {
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 30px;
     text-align: center;
+}
+
+.logout {
+    font-family: Roboto, sans-serif;
+    border-radius: 20px;
+    width: 156.896px;
+    height: 42px;
+    padding-top: 9px;
 }

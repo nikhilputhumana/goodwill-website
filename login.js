@@ -18,7 +18,9 @@ const firebaseConfig = {
 
 
   function login() {
-    email = document.getElementById('email1').value
+    console.log("function called");
+
+    email = document.getElementById('email1').value;
     password = document.getElementById('password1').value
   
     if (validate_email(email) == false || validate_password(password) == false) {
