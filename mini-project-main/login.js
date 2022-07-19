@@ -1,4 +1,3 @@
-//connecting with firebase
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
@@ -16,8 +15,9 @@ const firebaseConfig = {
   const auth = firebase.auth()
   const database = firebase.database()
 
+//--------- USER LOGIN ---------------
 
-  function login() {
+  function userLogin() {
     console.log("function called");
 
     email = document.getElementById('email1').value;
@@ -35,10 +35,11 @@ const firebaseConfig = {
         var user_data = {
           last_login: Date.now()
         }
-        database_ref.child('users/' + user.uid).update(user_data)
-  
-        alert('User Logged In')
-  
+        database_ref.child('users/' + user.uid).update(user_data);
+        
+        // alert('User Logged In');
+        window.location.replace('./user-dashboard.html');
+
       })
       .catch(function (error) {
         var error_code = error.code
@@ -48,7 +49,41 @@ const firebaseConfig = {
   }
 
 
+  //------------- Organisation login ----------------
 
+  function orgLogin() {
+
+    email = document.getElementById('email2').value;
+    password = document.getElementById('password2').value;
+  
+    if (validate_email(email) == false || validate_password(password) == false) {
+      alert('Invalid Email or Password')
+      return
+    }
+  
+    auth.signInWithEmailAndPassword(email, password)
+      .then(function () {
+        console.log("inside fun called");
+        var user = auth.currentUser
+        var database_ref = database.ref()
+        var user_data = {
+          last_login: Date.now()
+        }
+        database_ref.child('orgs/' + user.uid).update(user_data);
+        
+        // alert('User Logged In');
+        window.location.replace('./organization-dashboard.html');
+
+      })
+      .catch(function (error) {
+        var error_code = error.code
+        var error_message = error.message
+        alert(error_message)
+      })
+  }
+
+
+  //-------------- Validation ----------------------
   function validate_email(email) {
     expression = /^[^@]+@\w+(\.\w+)+\w$/
     if (expression.test(email) == true) {

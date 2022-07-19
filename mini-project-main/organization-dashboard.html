@@ -18,263 +18,257 @@
 </head>
 
 
-<!--Start of page body------------------------------------------------------------->
+<!------------------------------Start of page body--------------------------------->
 
 <body>
     <div>
-        <div>
-            <nav class="navbar navbar-light navbar-expand-md py-3">
-                <div class="container">
-                    <a class="navbar-brand d-flex align-items-center" href="#">
-                        <img class="img-fluid image1" src="assets/img/logo-removebg-preview.png">
-                    </a>
-                    <div class="collapse navbar-collapse" id="navcol-2">                        
-                        <div class="navbar-nav ms-auto">
-                            <a href="./notification.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="blue" class="bi bi-bell-fill me-3" viewBox="0 0 16 16">
-                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>                                
-                                </svg>
-                            </a>                            
-                        </div>
-                        <a class="btn btn-primary ms-md-2 logout" role="button" href="index.html">LOGOUT</a> 
-                </div>
-            </nav>
-        </div>
-
-        <div class="container m-5">
-            <h4 class="mb-3">Welcome</h4>
-            <h1 class="mb-3">ABC Charity Organization</h1>
-            
-        </div>
-
-        <div class="container">
-            <div class="row">
-
-<!--Food Table------------------------------------------------------------->
-                <div class="col-md-12 tble">
-                    <h1 class="m-4 subhead">Food items listed near you</h1>
-
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Sl.No</th>
-                                    <th>Type</th>
-                                    <th>Food Item</th>                                    
-                                    <th>Quantity</th>
-                                    <th>Manufacturing date</th>
-                                    <th>Expiry date</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="foodtbody"></tbody>
-                        </table>
-                    </div>  
-                </div>
-
-             <script type ="module">
-
-                     var slno = 0;
-                     var tbody = document.getElementById('foodtbody');
-
-                     function AddItemToTable(type,fooditem,quantity,mfgdate,expdate){
-                        let trow = document.createElement('tr');
-                        let td1 = document.createElement('td');
-                        let td2 = document.createElement('td');
-                        let td3 = document.createElement('td');
-                        let td4 = document.createElement('td');
-                        let td5 = document.createElement('td');
-                        let td6 = document.createElement('td');
-
-                        td1.innerHTML= ++slno;
-                        td2.innerHTML= type;
-                        td3.innerHTML= fooditem;
-                        td4.innerHTML= quantity;
-                        td5.innerHTML= mfgdate;
-                        td6.innerHTML= expdate;
-
-                        trow.appendChild(td1);
-                        trow.appendChild(td2);
-                        trow.appendChild(td3);
-                        trow.appendChild(td4);
-                        trow.appendChild(td5);
-                        trow.appendChild(td6);
-
-                        tbody.appendChild(trow);
-
-                     }
-
-                     function AddAllItemsToTable(Food){
-                        slno=0;
-                        tbody.innerHTML="";
-                        Food.forEach(element => {
-                            AddItemToTable(element.type,element.fooditem,element.quantity,element.mfgdate,element.expdate);
-                        });
-                     }
-
-
-
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
-
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
-    authDomain: "goodwill-e7efe.firebaseapp.com",
-    databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "goodwill-e7efe",
-    storageBucket: "goodwill-e7efe.appspot.com",
-    messagingSenderId: "146109014734",
-    appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
-    measurementId: "G-T98YNWQCXP"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
-
-  import{getDatabase, ref, child, onValue, get }
-  from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
-
-  const db = getDatabase();
-
-//--Getting all data-------------------------------------------------------------
-
-function GetAllDataOnce(){
-    const dbRef = ref(db);
-
-    get(child(dbRef,"food"))
-    .then((snapshot)=>{
-        var food = [];
-
-        snapshot.forEach(childSnapshot=>{
-            food.push(childSnapshot.val());
-        });
-
-        AddAllItemsToTable(food);
-    });
-}
-
-window.onload = GetAllDataOnce;
-
-</script> 
-             
-             
- <!--Clothes Table------------------------------------------------------------->
-                <div class="mt-5 mb-5 col-md-12 tble">
-                    <h1 class="m-4 subhead">Clothes listed near you</h1>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Sl.No</th>
-                                    <th>Gender</th>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Size</th>
-                                </tr>
-                            </thead>
-                            <tbody id="clothtbody"></tbody>
-                        </table>
+        <nav class="navbar navbar-light navbar-expand-md py-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img class="img-fluid image1" src="assets/img/logo-removebg-preview.png">
+                </a>
+                <div class="collapse navbar-collapse" id="navcol-2">
+                    <div class="navbar-nav ms-auto">
+                        <a href="./notification.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="blue"
+                                class="bi bi-bell-fill me-3" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                            </svg>
+                        </a>
                     </div>
+                    <a class="btn btn-primary ms-md-2 logout" role="button" href="index.html">LOGOUT</a>
                 </div>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="container m-5">
+        <h4 class="mb-3">Welcome</h4>
+        <h1 class="mb-3" id="orgname"></h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <!--------------------------Food Table------------------------------------->
+            <div class="col-md-12 tble">
+                <h1 class="m-4 subhead">Food items listed near you</h1>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sl.No</th>
+                                <th>Type</th>
+                                <th>Food Item</th>
+                                <th>Quantity</th>
+                                <th>Manufacturing date</th>
+                                <th>Expiry date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="foodtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <script type="module">
+
+                var slno = 0;
+                var tbody = document.getElementById('foodtbody');
+
+                function AddItemToTable(type, fooditem, quantity, mfgdate, expdate) {
+                    let trow = document.createElement('tr');
+                    let td1 = document.createElement('td');
+                    let td2 = document.createElement('td');
+                    let td3 = document.createElement('td');
+                    let td4 = document.createElement('td');
+                    let td5 = document.createElement('td');
+                    let td6 = document.createElement('td');
+
+                    td1.innerHTML = ++slno;
+                    td2.innerHTML = type;
+                    td3.innerHTML = fooditem;
+                    td4.innerHTML = quantity;
+                    td5.innerHTML = mfgdate;
+                    td6.innerHTML = expdate;
+
+                    trow.appendChild(td1);
+                    trow.appendChild(td2);
+                    trow.appendChild(td3);
+                    trow.appendChild(td4);
+                    trow.appendChild(td5);
+                    trow.appendChild(td6);
+
+                    tbody.appendChild(trow);
+
+                }
+
+                function AddAllItemsToTable(Food) {
+                    slno = 0;
+                    tbody.innerHTML = "";
+                    Food.forEach(element => {
+                        AddItemToTable(element.type, element.fooditem, element.quantity, element.mfgdate, element.expdate);
+                    });
+                }
 
 
-    <script type ="module">
-        var sllno = 0;
-        var ttbody = document.getElementById('clothtbody');
-
-        function AddItemToclothTable(gender,item,clothquantity,size){
-           let ttrow = document.createElement('tr');
-           let ttd1 = document.createElement('td');
-           let ttd2 = document.createElement('td');
-           let ttd3 = document.createElement('td');
-           let ttd4 = document.createElement('td');
-           let ttd5 = document.createElement('td');
-      
-
-           ttd1.innerHTML= ++sllno;
-           ttd2.innerHTML= gender;
-           ttd3.innerHTML= item;
-           ttd4.innerHTML= clothquantity;
-           ttd5.innerHTML= size;
-           
-
-           ttrow.appendChild(ttd1);
-           ttrow.appendChild(ttd2);
-           ttrow.appendChild(ttd3);
-           ttrow.appendChild(ttd4);
-           ttrow.appendChild(ttd5);
-           
-
-           ttbody.appendChild(ttrow);
-
-        }
-
-        function AddAllItemsToclothTable(cloth){
-           sllno=0;
-           ttbody.innerHTML="";
-           cloth.forEach(element => {
-               AddItemToclothTable(element.gender,element.clothitem,element.quantity,element.size);
-           });
-        }
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
 
 
+                const firebaseConfig = {
+                    apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
+                    authDomain: "goodwill-e7efe.firebaseapp.com",
+                    databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
+                    projectId: "goodwill-e7efe",
+                    storageBucket: "goodwill-e7efe.appspot.com",
+                    messagingSenderId: "146109014734",
+                    appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
+                    measurementId: "G-T98YNWQCXP"
+                };
 
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
 
+                import { getDatabase, ref, child, onValue, get }
+                    from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
 
-  const firebaseConfig2 = {
-    apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
-    authDomain: "goodwill-e7efe.firebaseapp.com",
-    databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "goodwill-e7efe",
-    storageBucket: "goodwill-e7efe.appspot.com",
-    messagingSenderId: "146109014734",
-    appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
-    measurementId: "G-T98YNWQCXP"
-  };
+                const db = getDatabase();
 
+                //-------------------Getting all data--------------------------------------------
 
-  // Initialize Firebase
-  const capp = initializeApp(firebaseConfig2);
-  const canalytics = getAnalytics(capp);
+                function GetAllDataOnce() {
+                    const dbRef = ref(db);
 
+                    get(child(dbRef, "food"))
+                        .then((snapshot) => {
+                            var food = [];
 
-  import{getDatabase, ref, child, onValue, get }
-  from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
+                            snapshot.forEach(childSnapshot => {
+                                food.push(childSnapshot.val());
+                            });
 
-  const cdb = getDatabase();
+                            AddAllItemsToTable(food);
+                        });
+                }
 
-//--Getting all data-------------------------------------------------------------
+                window.onload = GetAllDataOnce;
 
-function GetAllclothDataOnce(){
-    const dbRef = ref(cdb);
-
-    get(child(dbRef,"clothes"))
-    .then((snapshot)=>{
-        var clothes = [];
-
-        snapshot.forEach(childSnapshot=>{
-            clothes.push(childSnapshot.val());
-        });
-
-        AddAllItemsToclothTable(clothes);
-    });
-}
-
-window.onload = GetAllclothDataOnce;
-
-     
-</script>
+            </script>
+            
 
 
- <!--Script Codes------------------------------------------------------------->
+            <!---------------------Clothes Table------------------------------------------>
+            <div class="mt-5 mb-5 col-md-12 tble">
+                <h1 class="m-4 subhead">Clothes listed near you</h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sl.No</th>
+                                <th>Gender</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Size</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clothtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <script type="module">
+                var sllno = 0;
+                var ttbody = document.getElementById('clothtbody');
+
+                function AddItemToclothTable(gender, item, clothquantity, size) {
+                    let ttrow = document.createElement('tr');
+                    let ttd1 = document.createElement('td');
+                    let ttd2 = document.createElement('td');
+                    let ttd3 = document.createElement('td');
+                    let ttd4 = document.createElement('td');
+                    let ttd5 = document.createElement('td');
+
+
+                    ttd1.innerHTML = ++sllno;
+                    ttd2.innerHTML = gender;
+                    ttd3.innerHTML = item;
+                    ttd4.innerHTML = clothquantity;
+                    ttd5.innerHTML = size;
+
+
+                    ttrow.appendChild(ttd1);
+                    ttrow.appendChild(ttd2);
+                    ttrow.appendChild(ttd3);
+                    ttrow.appendChild(ttd4);
+                    ttrow.appendChild(ttd5);
+
+
+                    ttbody.appendChild(ttrow);
+
+                }
+
+                function AddAllItemsToclothTable(cloth) {
+                    sllno = 0;
+                    ttbody.innerHTML = "";
+                    cloth.forEach(element => {
+                        AddItemToclothTable(element.gender, element.clothitem, element.quantity, element.size);
+                    });
+                }
+
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+
+                const firebaseConfig2 = {
+                    apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
+                    authDomain: "goodwill-e7efe.firebaseapp.com",
+                    databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
+                    projectId: "goodwill-e7efe",
+                    storageBucket: "goodwill-e7efe.appspot.com",
+                    messagingSenderId: "146109014734",
+                    appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
+                    measurementId: "G-T98YNWQCXP"
+                };
+
+                const capp = initializeApp(firebaseConfig2);
+
+                import { getDatabase, ref, child, onValue, get }
+                    from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
+
+                const cdb = getDatabase();
+
+                //----------------------Getting all data-----------------------------------------
+
+                function GetAllclothDataOnce() {
+                    const dbRef = ref(cdb);
+
+                    get(child(dbRef, "clothes"))
+                        .then((snapshot) => {
+                            var clothes = [];
+
+                            snapshot.forEach(childSnapshot => {
+                                clothes.push(childSnapshot.val());
+                            });
+
+                            AddAllItemsToclothTable(clothes);
+                        });
+                }
+
+                window.onload = GetAllclothDataOnce;
+
+            </script>
+
+        </div>
+    
+    <!---------------------Script Codes------------------------------------------>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="org-dash.js"></script>
 
 </body>
 
