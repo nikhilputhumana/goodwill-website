@@ -29,16 +29,10 @@ const firebaseConfig = {
     }
   
     auth.signInWithEmailAndPassword(email, password)
-      .then(function () {
-        var user = auth.currentUser
-        var database_ref = database.ref()
-        var user_data = {
-          last_login: Date.now()
-        }
-        database_ref.child('users/' + user.uid).update(user_data);
-        
-        // alert('User Logged In');
-        window.location.replace('./user-dashboard.html');
+      .then((userCredential) => {
+        const user = userCredential.user;
+      
+        location.href = "user-dashboard.html";
 
       })
       .catch(function (error) {
@@ -62,18 +56,11 @@ const firebaseConfig = {
     }
   
     auth.signInWithEmailAndPassword(email, password)
-      .then(function () {
-        console.log("inside fun called");
-        var user = auth.currentUser
-        var database_ref = database.ref()
-        var user_data = {
-          last_login: Date.now()
-        }
-        database_ref.child('orgs/' + user.uid).update(user_data);
+      .then((userCredential) => {
         
-        // alert('User Logged In');
-        window.location.replace('./organization-dashboard.html');
-
+        const user = userCredential.user;
+        
+        location.href = "organization-dashboard.html";
       })
       .catch(function (error) {
         var error_code = error.code

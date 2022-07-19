@@ -11,12 +11,23 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        getUserData(user.uid)
+    }
+})
+
+function getUserData(uid) {
+    firebase.database().ref('users/' + uid).once("value", snap => {
+        console.log(snap.val())
+    })
+}
+
 const user = firebase.auth().currentUser;
 
-const displayName = user.displayName;
-console.log("hai")
-document.getElementById('orgname').innerHTML = displayName;
+console.log(user)
 
+document.getElementById('orgname').innerHTML = user.displayName;
 
 if (user) {
     console.log("fun call")
@@ -29,4 +40,8 @@ if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
 }
+
+
+
+
 
