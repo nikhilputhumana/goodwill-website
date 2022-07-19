@@ -28,21 +28,16 @@
                     <img class="img-fluid image1" src="assets/img/logo-removebg-preview.png">
                 </a>
                 <div class="collapse navbar-collapse" id="navcol-2">
-                    <div class="navbar-nav ms-auto">
-                        <a href="./notification.html">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="blue"
-                                class="bi bi-bell-fill me-3" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
-                            </svg>
-                        </a>
-                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <a class="me-4" href="#tableclothes"><li class="nav-item">Clothes</li></a>
+                        <a class="me-4" href="#tablefood"><li class="nav-item">Food</li></a>
+                    </ul>
                     <a class="btn btn-primary ms-md-2 logout" role="button" href="index.html">LOGOUT</a>
                 </div>
             </div>
         </nav>
     </div>
-    
+
     <div class="container m-5">
         <h4 class="mb-3">Welcome</h4>
         <h1 class="mb-3" id="orgname"></h1>
@@ -52,7 +47,7 @@
         <div class="row">
 
             <!--------------------------Food Table------------------------------------->
-            <div class="col-md-12 tble">
+            <div class="col-md-12 tble" id="tablefood">
                 <h1 class="m-4 subhead">Food items listed near you</h1>
 
                 <div class="table-responsive">
@@ -136,7 +131,6 @@
 
                 const db = getDatabase();
 
-                //-------------------Getting all data--------------------------------------------
 
                 function GetAllDataOnce() {
                     const dbRef = ref(db);
@@ -156,11 +150,11 @@
                 window.onload = GetAllDataOnce;
 
             </script>
-            
 
 
             <!---------------------Clothes Table------------------------------------------>
-            <div class="mt-5 mb-5 col-md-12 tble">
+            
+            <div class="mt-5 mb-5 col-md-12 tble" id="tableclothes">
                 <h1 class="m-4 subhead">Clothes listed near you</h1>
                 <div class="table-responsive">
                     <table class="table">
@@ -238,7 +232,6 @@
 
                 const cdb = getDatabase();
 
-                //----------------------Getting all data-----------------------------------------
 
                 function GetAllclothDataOnce() {
                     const dbRef = ref(cdb);
@@ -255,20 +248,33 @@
                         });
                 }
 
-                window.onload = GetAllclothDataOnce;
+                function addLoadEvent(func) {
+                    var oldonload = window.onload;
+                    if (typeof window.onload != 'function') {
+                        window.onload = func;
+                    } else {
+                        window.onload = function () {
+                            if (oldonload) {
+                                oldonload();
+                            }
+                            func();
+                        }
+                    }
+                }
+                addLoadEvent(GetAllclothDataOnce);
 
             </script>
 
         </div>
-    
-    <!---------------------Script Codes------------------------------------------>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-    
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="org-dash.js"></script>
+
+        <!---------------------Script Codes------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+        <script src="org-dash.js"></script>
 
 </body>
 

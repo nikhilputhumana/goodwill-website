@@ -65,7 +65,8 @@ function registeruser() {
       }
       database_ref.child('users/' + user.uid).set(user_data)
       alert('User Registered \n\nPlease login to continue');
-      window.location.replace('./login.html');
+
+    
     })
     .catch(function (error) {
       var error_code = error.code

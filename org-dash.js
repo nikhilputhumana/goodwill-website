@@ -11,6 +11,24 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+
+var firebaseRef = firebase.database().ref("orgs/")
+
+firebaseRef.on("value", function (snapshot) {
+
+    snapshot.forEach(function (element) {
+        // console.log(element.val().details);
+        // console.log(element.val().email);
+        document.getElementById("orgname").innerHTML = element.val().name
+
+    });
+
+})
+
+
+/*
+
+
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         getUserData(user.uid)
@@ -41,7 +59,4 @@ if (user) {
     // https://firebase.google.com/docs/reference/js/firebase.User
 }
 
-
-
-
-
+*/
