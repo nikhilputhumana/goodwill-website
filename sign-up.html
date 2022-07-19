@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/dh-header-non-rectangular.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Right-Links.css">
+    <link rel="stylesheet" href="assets/css/sign-up.css">
+  <title>Goodwill</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light navbar-expand-md py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+          <img class="img-fluid image1" src="assets/img/logo-removebg-preview.png">
+      </a>
+      <div class="collapse navbar-collapse" id="navcol-2">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+        </ul>
+        <a class="btn btn-primary ms-md-2 logout" role="button" href="./login.html">Login here</a>
+        </div>
+    </div>
+  </nav>
+  
+
+  <div class="content-box">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link nav-head active" role="tab" data-bs-toggle="tab" href="#tab-1">User signup</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link nav-head" role="tab" data-bs-toggle="tab" href="#tab-2">Organisation signup</a>
+      </li>
+    </ul>
+<!------------ USER --------------------->
+    <div class="tab-content container">
+      <div class="tab-pane active" role="tabpanel" id="tab-1">
+        <h1 class="mt-4 mb-3">
+          <b> Create an account(Users)</b>
+        </h1>
+        <div class="container">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inputName">Name</label>
+              <input type="text" class="form-control" id="inputName" placeholder="Enter name" required>
+            </div>
+
+            <div class="row mt-3">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="email1" placeholder="Enter Email" required>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputPhone">Phone number</label>
+                <input type="number" class="form-control" id="inputPhone" placeholder="Enter phone number" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Enter address" required>
+          </div>
+
+          <div class="row mt-3">
+            <div class="form-group col-md-6">
+              <label for="inputDistrict">District</label>
+              <input type="text" class="form-control" id="inputDisrict" placeholder="District name" required>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputZip">Pin code</label>
+              <input type="number" class="form-control" id="inputZip" placeholder="Enter pin code" required>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6 mt-3">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="password1" placeholder="Enter password" required>
+          </div>
+
+          <button type="submit" onclick="registeruser()" class="btn btn-primary mt-3 mb-4">Register</button>
+        </div>
+      </div>
+
+      <!---------------------------ORGANISATION------------------------------------->
+
+      <div class="tab-pane" role="tabpanel" id="tab-2">
+        <h1 class="mt-4 mb-3">
+          <b> Create an account (Organisation)</b>
+        </h1>
+        <div>
+          <div class="container">
+            
+              <div class="form-group">
+                <label for="inputName">Organisation name</label>
+                <input type="text" class="form-control" id="orgName" placeholder="Enter Organisation name" required>
+              </div>
+
+              <div class="form-group mt-3">
+                <label for="inputPhone">Register number</label>
+                <input type="text" class="form-control" id="orgReg" placeholder="Enter register number" required>
+              </div>
+
+              <div class="row mt-3">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Email</label>
+                  <input type="email" class="form-control" id="orgEmail" placeholder="Enter email" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="inputPhone">Phone number</label>
+                  <input type="number" class="form-control" id="orgPhone" placeholder="Enter phone number" required>
+                </div>
+              </div>
+
+            <div class="form-group mt-3">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="orgAddress" placeholder="Enter address" required>
+            </div>
+
+            <div class="row mt-3">
+              <div class="form-group col-md-6">
+                <label for="inputDistrict">District</label>
+                <input type="text" class="form-control" id="orgDisrict" placeholder="District name" required>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputZip">Pin code</label>
+                <input type="number" class="form-control" id="orgZip" placeholder="Enter pin code" required>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6 mt-3">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="orgPassword" placeholder="Password" required>
+            </div>
+
+            <button type="submit" onclick="registerorg()" class="btn btn-primary mt-3 mb-4">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  
+
+    <!------------------------------ REQUIRED ----------------------------------->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="./signup.js"></script>
+
+</body>
+
+</html>
