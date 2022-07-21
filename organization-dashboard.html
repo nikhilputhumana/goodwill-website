@@ -106,12 +106,13 @@
                         <td id="fpin" class="ps-3"></td>
                     </tr>
                 </table>
-                
-                
+
+
             </div>
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" id="closeme" data-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-danger" id="faccept" data-dismiss="modal">Accept and Delete Data</button>
+                <button type="button" class="btn btn-danger" id="faccept" data-dismiss="modal">Accept and Delete
+                    Data</button>
             </div>
         </div>
     </div>
@@ -164,7 +165,8 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="caccept" data-dismiss="modal">Accept and Delete Data</button>
+                <button type="button" class="btn btn-danger" id="caccept" data-dismiss="modal">Accept and Delete
+                    Data</button>
                 <!-- <button type="button" class="btn btn-secondary" id="ccloseme" data-dismiss="modal">Close</button> -->
             </div>
         </div>
@@ -202,6 +204,8 @@
                 var slno = 0;
                 var tbody = document.getElementById('foodtbody');
 
+
+
                 function AddItemToTable(type, fooditem, quantity, mfgdate, mfgtime, expdate, exptime, name, contact, address, pin) {
                     let trow = document.createElement('tr');
                     let td1 = document.createElement('td');
@@ -225,6 +229,7 @@
                     let m10 = document.getElementById("faddr");
                     let m11 = document.getElementById("fpin");
 
+
                     td1.innerHTML = ++slno;
                     td2.innerHTML = type;
                     td3.innerHTML = fooditem;
@@ -242,6 +247,7 @@
                     trow.appendChild(td7);
 
                     tbody.appendChild(trow);
+
 
                     //---- Adding Button -----
                     td7.addEventListener("click", function () {
@@ -439,7 +445,7 @@
                         m6.innerHTML = contact;
                         m7.innerHTML = address;
                         m8.innerHTML = pin;
-                    
+
                     });
 
                 }
