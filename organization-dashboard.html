@@ -110,7 +110,8 @@
                 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="closeme" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-secondary" id="closeme" data-dismiss="modal">Close</button> -->
+                <button type="button" class="btn btn-danger" id="faccept" data-dismiss="modal">Accept and Delete Data</button>
             </div>
         </div>
     </div>
@@ -163,7 +164,8 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="ccloseme" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="caccept" data-dismiss="modal">Accept and Delete Data</button>
+                <!-- <button type="button" class="btn btn-secondary" id="ccloseme" data-dismiss="modal">Close</button> -->
             </div>
         </div>
     </div>
@@ -246,16 +248,18 @@
 
                         var modal = document.getElementById("foodModal");
                         var span = document.getElementsByClassName("close")[0];
-                        var cl = document.getElementById("closeme");
+                        // var cl = document.getElementById("closeme");
 
                         modal.style.display = "block";
 
                         span.onclick = function () {
                             modal.style.display = "none";
                         }
+                        /*
                         cl.onclick = function () {
                             modal.style.display = "none";
                         }
+                        */
 
                         //----- For modal --------
                         m1.innerHTML = type;
@@ -412,7 +416,7 @@
 
                         var modal = document.getElementById("clothModal");
                         var span = document.getElementsByClassName("cclose")[0];
-                        var cl = document.getElementById("ccloseme");
+                        // var cl = document.getElementById("ccloseme");
 
                         modal.style.display = "block";
 
@@ -420,9 +424,11 @@
                             console.log("Clicked");
                             modal.style.display = "none";
                         }
+                        /*
                         cl.onclick = function () {
                             modal.style.display = "none";
                         }
+                        */
 
                         //----- For modal --------
                         m1.innerHTML = gender;
