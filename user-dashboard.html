@@ -31,75 +31,217 @@
                 </div>
             </div>
         </nav>
-        
+
         <div class="container text-center">
             <h4>Welcome</h4>
-            <!-- <h1>Noel Varghese Oommen</h1>  -->
+            <h1 id="emailHead"></h1>
         </div>
 
         <div class="container mt-5 mb-3 text-center">
             <a class="btn btn-primary btn-lg ms-md-2 don-but" role="button" href="./user-donation.html">Donate Here</a>
         </div>
-        
-        <!--
+
+
 
         <div class="container">
             <div class="row">
                 <div class="col text-center mt-5">
-                    <h2 class=""> Your Donations </h2>
+                    <h2> Your Donations </h2>
                 </div>
-                <div class="col-md-12 mt-5 mb-5 tble">
+
+                <!--------------------------Food Table------------------------------------->
+                <div class="col-md-12 tble" id="tablefood">
+                    <h3 class="m-4 subhead">Food items listed near you</h3>
+
                     <div class="table-responsive">
-                        <table class="table text-center">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Sl.No</th>
-                                    <th>Type</th>
-                                    <th>Requested By</th>
+                                    <th>Food Item</th>
                                     <th>Quantity</th>
-                                    <th>Size</th>                                    
+                                    <th>Manufacturing date</th>
+                                    <th>Expiry date</th>
+                                    <th>Status</th>
+                                    <th></th>
                                 </tr>
                             </thead>
-                            
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>T Shirt</td>
-                                    <td>Kasturba Welfare Organization</td>
-                                    <td>35</td>
-                                    <td>L</td>                                    
-                                    <td><a class="btn btn-secondary" role="button" href="#">Delete</a></td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>Pants</td>
-                                    <td>Jeevan Foundation</td>
-                                    <td>20</td>
-                                    <td>S</td>                                    
-                                    <td><a class="btn btn-primary" role="button" href="#">Accept</a></td>
-                                    <td><a class="btn btn-secondary" role="button" href="#">Decline</a></td>
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>Meals</td>
-                                    <td>ABC Organization</td>
-                                    <td>30</td>
-                                    <td>S</td>                              
-                                    <td><a class="btn btn-primary" role="button" href="#">Accept</a></td>
-                                    <td><a class="btn btn-secondary" role="button" href="#">Decline</a></td>
-                                </tr>
-                            </tbody>
+                            <tbody id="foodtbody"></tbody>
                         </table>
                     </div>
                 </div>
+
+                <script type="module">
+                    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+
+                    const firebaseConfig = {
+                        apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
+                        authDomain: "goodwill-e7efe.firebaseapp.com",
+                        databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
+                        projectId: "goodwill-e7efe",
+                        storageBucket: "goodwill-e7efe.appspot.com",
+                        messagingSenderId: "146109014734",
+                        appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
+                        measurementId: "G-T98YNWQCXP"
+                    };
+
+                    // Initialize Firebase
+                    const app = initializeApp(firebaseConfig);
+
+                    import { getDatabase, ref, child, onValue, get }
+                        from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
+
+                    const db = getDatabase();
+
+                    const auth = firebase.auth()
+                    const database = firebase.database()
+
+                    // var curmail;
+
+                    const afterAuth = (user) => {
+                        if (user) {
+                            var curmail = user.email;
+                            console.log("E mail is " + curmail)
+                            document.getElementById("emailHead").innerHTML = curmail;
+                            console.log("cutrrent " + curmail);
+
+                            var slno = 0;
+                            var tbody = document.getElementById('foodtbody');
+
+                            function AddItemToTable(fooditem, quantity, mfgdate, expdate, key, status, mail) {
+                                let trow = document.createElement('tr');
+
+                                let td1 = document.createElement('td');
+                                let td3 = document.createElement('td');
+                                let td4 = document.createElement('td');
+                                let td5 = document.createElement('td');
+                                let td6 = document.createElement('td');
+                                let td66 = document.createElement('td');
+                                let td7 = document.createElement('td');
+
+                                var mykey = key;
+                                var productmail = mail;
+
+
+                                /*       -------- DONOT DELETE ----------
+                                function TDate() {
+                                    var UserDate = document.getElementById("fexpd");     // .value;
+                                    var ToDate = new Date();
+                            
+                                    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+                                        alert("The Date must be Bigger or Equal to today date");
+                                        return false;
+                                    }
+                                    return true;
+                                }
+                                */
+
+                                td1.innerHTML = ++slno;
+                                td3.innerHTML = fooditem;
+                                td4.innerHTML = quantity;
+                                td5.innerHTML = mfgdate;
+                                td6.innerHTML = expdate;
+                                td66.innerHTML = "<b><i>" + status + "</i></b>";
+                                td7.innerHTML = "<button class=\"btn btn-danger idHere\">Delete</button>";
+
+                                // console.log("Mail: " + productmail);
+                                // console.log("Current mail: " + curmail);
+
+                                if (mail == curmail) {
+                                    console.log("Same")
+                                }
+                                
+                                trow.appendChild(td1);
+                                trow.appendChild(td3);
+                                trow.appendChild(td4);
+                                trow.appendChild(td5);
+                                trow.appendChild(td6);
+                                trow.appendChild(td66);
+                                trow.appendChild(td7);
+
+                                tbody.appendChild(trow);
+
+
+                                //---- Adding Button -----
+                                td7.addEventListener("click", function () {
+                                    console.log("Current key is " + mykey);
+                                    var dlt = document.getElementById("faccept");
+
+                                    faccept.onclick = function () {
+                                        firebase.database().ref('food/' + mykey).update({
+                                            status: "unavailable"
+                                        })
+
+                                        modal.style.display = "none";
+                                        location.reload();
+                                    }
+
+                                    /*  DELETE FUNCTION 
+                                    faccept.onclick = function () {
+                                        firebase.database().ref('food/' + mykey).remove().then(() => {
+                                            alert("Deleted");
+                                        }).catch((error) => {
+                                            console.error("Error removing document: ", error);
+                                        });
+                            
+                                        modal.style.display = "none";
+                                        location.reload();
+                                    }
+                                    */
+
+                                });
+
+                            }
+
+
+                            function AddAllItemsToTable(Food) {
+                                slno = 0;
+                                tbody.innerHTML = "";
+                                Food.forEach(element => {
+                                    AddItemToTable(element.fooditem, element.quantity, element.mfgdate, element.expdate, element.key, element.status, element.mail);
+                                });
+                            }
+
+
+                            //----- here ------------
+
+                            function GetAllDataOnce() {
+                                const dbRef = ref(db);
+
+                                get(child(dbRef, "food"))
+                                    .then((snapshot) => {
+                                        var food = [];
+
+                                        snapshot.forEach(childSnapshot => {
+                                            food.push(childSnapshot.val());
+                                        });
+
+                                        AddAllItemsToTable(food);
+                                    });
+                            }
+
+                            window.onload = GetAllDataOnce;
+
+
+                        }
+                        else {
+                            // User is signed out.
+                        }
+
+                    }
+
+                    let curmail = await firebase.auth().onAuthStateChanged(afterAuth);
+
+
+                </script>
+
+
             </div>
         </div>
 
-        -->
+
     </div>
-    
+
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
 

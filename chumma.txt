@@ -104,14 +104,15 @@
                     <tr>
                         <td>Pin code:</td>
                         <td id="fpin" class="ps-3"></td>
-                    </tr>    
+                    </tr>            
                 </table>
 
 
             </div>
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" id="closeme" data-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-danger" id="faccept" data-dismiss="modal">Accept and Delete Data</button>
+                <button type="button" class="btn btn-danger" id="faccept" data-dismiss="modal">Accept and Delete
+                    Data</button>
             </div>
         </div>
     </div>
@@ -186,6 +187,7 @@
                         <thead>
                             <tr>
                                 <th>Sl.No</th>
+
                                 <th>Food Item</th>
                                 <th>Quantity</th>
                                 <th>Manufacturing date</th>
@@ -274,6 +276,7 @@
                         var modal = document.getElementById("foodModal");
                         var span = document.getElementsByClassName("close")[0];
                         var dlt = document.getElementById("faccept");
+                        // var cl = document.getElementById("closeme");
 
                         modal.style.display = "block";
 
@@ -282,16 +285,14 @@
                         }
 
 
-                        faccept.onclick = async function () {  
-                                                      
-                            const res = await firebase.database().ref('food/'+mykey).update({ 
-                                status:"unavailable"
+                        faccept.onclick = function () {
+                            firebase.database().ref('food/' + mykey).update({
+                                status: "unavailable"
                             })
-                            console.log("res = "+res)
-                            
+
                             modal.style.display = "none";
                             location.reload();
-                        } 
+                        }
 
                         /*  DELETE FUNCTION 
                         faccept.onclick = function () {
@@ -318,7 +319,7 @@
                         m8.innerHTML = name;
                         m9.innerHTML = contact;
                         m10.innerHTML = address;
-                        m11.innerHTML = pin;
+                        m11.innerHTML = pin;                        
 
                     });
 
@@ -403,15 +404,13 @@
                 var sllno = 0;
                 var ttbody = document.getElementById('clothtbody');
 
-                function AddItemToclothTable(gender, clothitem, quantity, size, name, contact, address, pin, key, status) {
+                function AddItemToclothTable(gender, clothitem, quantity, size, name, contact, address, pin) {
                     let ttrow = document.createElement('tr');
-                    
                     let ttd1 = document.createElement('td');
                     let ttd2 = document.createElement('td');
                     let ttd3 = document.createElement('td');
                     let ttd4 = document.createElement('td');
                     let ttd5 = document.createElement('td');
-                    let ttd6 = document.createElement('td');
                     let td7 = document.createElement('td');
 
                     //---- For Modal --------
@@ -430,20 +429,15 @@
                     ttd3.innerHTML = clothitem;
                     ttd4.innerHTML = quantity;
                     ttd5.innerHTML = size;
-                    ttd6.innerHTML = "<b><i>" + status + "</i></b>";
                     td7.innerHTML = "<button class=\"btn btn-primary\">View details</button>";
 
-                    var cmykey = key;
 
                     ttrow.appendChild(ttd1);
                     ttrow.appendChild(ttd3);
                     ttrow.appendChild(ttd2);
                     ttrow.appendChild(ttd4);
                     ttrow.appendChild(ttd5);
-                    ttrow.appendChild(ttd6);
-                    if (status == "available") {
-                        ttrow.appendChild(td7);
-                    }
+                    ttrow.appendChild(td7);
 
                     ttbody.appendChild(ttrow);
 
@@ -451,23 +445,19 @@
 
                         var modal = document.getElementById("clothModal");
                         var span = document.getElementsByClassName("cclose")[0];
-                        var dlt = document.getElementById("caccpet");
+                        // var cl = document.getElementById("ccloseme");
 
                         modal.style.display = "block";
 
-                        span.onclick = function () {                    
+                        span.onclick = function () {
+                            console.log("Clicked");
                             modal.style.display = "none";
-                        }                    
-
-                        caccept.onclick = async function () {
-                            console.log("key is ",cmykey)
-                            const res = await firebase.database().ref('clothes/' + cmykey).update({
-                                status: "unavailable"
-                            })
-                            // console.log("res is ", res)
-                            modal.style.display = "none";
-                            location.reload();
                         }
+                        /*
+                        cl.onclick = function () {
+                            modal.style.display = "none";
+                        }
+                        */
 
                         //----- For modal --------
                         m1.innerHTML = gender;
@@ -487,7 +477,7 @@
                     sllno = 0;
                     ttbody.innerHTML = "";
                     cloth.forEach(element => {
-                        AddItemToclothTable(element.gender, element.clothitem, element.quantity, element.size, element.name, element.contact, element.address, element.pin, element.key, element.status);
+                        AddItemToclothTable(element.gender, element.clothitem, element.quantity, element.size, element.name, element.contact, element.address, element.pin);
                     });
                 }
 

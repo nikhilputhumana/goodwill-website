@@ -16,6 +16,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+// ---- Get user details -------
+
+const auth = firebase.auth()
+const database = firebase.database()
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    var mail = user.email;
+    // console.log("Current user id is " + mail);
+  }
+  else {
+    // User is signed out.
+  }
+})
+
+console.log("Current user id is " + mail);
+
+//----- Cloth ---------
+
 function clothsubmit() {
 
   var ele = document.getElementsByName('gender');
@@ -34,6 +53,8 @@ function clothsubmit() {
       e.preventDefault();
     
       // Get values
+      var id2 = 0;
+      // var usermail = mail;
       var gender1 = gen;
       var item1 = getInputVal('citem'); 
       var quantity1 = getInputVal('cquantity');
@@ -43,7 +64,7 @@ function clothsubmit() {
       var caddress1 = getInputVal('caddress');
       var cpincode1 = getInputVal('cpincode');
     
-      saveMessage( gender1, item1, quantity1, size1, cname1, cnumber1, caddress1, cpincode1);
+      saveMessage( id2, gender1, item1, quantity1, size1, cname1, cnumber1, caddress1, cpincode1);  // 2nd: usermail,
       alert("Data added");
       document.getElementById('clothForm').reset();
     }
@@ -54,10 +75,13 @@ function clothsubmit() {
     }
     
     // Save message to firebase
-    function saveMessage( gender1, item1, quantity1, size1, cname1, cnumber1, caddress1, cpincode1)
+    function saveMessage( id2,  gender1, item1, quantity1, size1, cname1, cnumber1, caddress1, cpincode1)  // 2nd: usermail,
     {
       var newMessageRef = messagesRef.push();
+      var id2 = newMessageRef.getKey();
       newMessageRef.set({
+        key: id2,
+        // mail: usermail,
         gender: gender1,
         clothitem: item1,
         quantity: quantity1,
@@ -65,7 +89,8 @@ function clothsubmit() {
         name: cname1,
         contact: cnumber1,
         address: caddress1,
-        pin: cpincode1
+        pin: cpincode1,
+        status: "available"
       });
     }
 }
@@ -91,6 +116,8 @@ function foodsubmit() {
       e.preventDefault();
     
       // Get values
+      // var usermail = mail;
+      var id1 = 0;
       var foo1 = foo;
       var item1 = getInputVal('fitem'); 
       var quantity1 = getInputVal('fquantity');
@@ -103,21 +130,25 @@ function foodsubmit() {
       var faddress1 = getInputVal('faddress');
       var fpincode1 = getInputVal('fpincode');
     
-      saveMessage( foo1, item1, quantity1, mandate1, mandtime1, expdate1, exptime1, fname1, fnumber1, faddress1, fpincode1);
+      saveMessage(  id1, foo1, item1, quantity1, mandate1, mandtime1, expdate1, exptime1, fname1, fnumber1, faddress1, fpincode1); // 1st: usermail,
       alert("Data added");
       document.getElementById('foodForm').reset();
     }
     
-    // Function to get get form values
+    // Function to get form values
     function getInputVal(id) {
       return document.getElementById(id).value;
     }
     
     // Save message to firebase
-    function saveMessage( foo1, item1, quantity1, mandate1, mandtime1, expdate1, exptime1, fname1, fnumber1, faddress1, fpincode1)
+    function saveMessage(  id1, foo1, item1, quantity1, mandate1, mandtime1, expdate1, exptime1, fname1, fnumber1, faddress1, fpincode1) // 1st: usermail,
     {
       var newMessageRef = messagesRef.push();
+      // id1 = newMessageRef.child("food").push().getKey();
+      var id1 = newMessageRef.getKey();
       newMessageRef.set({
+        // mail: usermail,
+        key: id1,
         type: foo1,
         fooditem: item1,
         quantity: quantity1,
@@ -128,7 +159,35 @@ function foodsubmit() {
         name: fname1,
         contact: fnumber1,
         address: faddress1,
-        pin: fpincode1
+        pin: fpincode1,
+        status: "available"
       });
     }
+}
+
+
+
+// -- Validation ---
+function validate_field(field) {
+  if (field == null) {
+    return false
+  }
+
+  if (field.length <= 0) {
+    return false
+  } else {
+    return true
+  }
+}
+
+function validate_phone(num) {
+  if (num == null) {
+    return false
+  }
+
+  if (num.length < 10) {
+    return false
+  } else {
+    return true
+  }
 }

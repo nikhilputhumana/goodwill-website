@@ -11,52 +11,13 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
-var firebaseRef = firebase.database().ref("orgs/")
-
-firebaseRef.on("value", function (snapshot) {
-
-    snapshot.forEach(function (element) {
-        // console.log(element.val().details);
-        // console.log(element.val().email);
-        document.getElementById("orgname").innerHTML = element.val().name
-
-    });
-
-})
-
-
-/*
-
-
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
-        getUserData(user.uid)
+      var mail = user.email;
+      console.log("Current user id is " + mail);
+      document.getElementById("orgname").innerHTML = mail;
     }
-})
-
-function getUserData(uid) {
-    firebase.database().ref('users/' + uid).once("value", snap => {
-        console.log(snap.val())
-    })
-}
-
-const user = firebase.auth().currentUser;
-
-console.log(user)
-
-document.getElementById('orgname').innerHTML = user.displayName;
-
-if (user) {
-    console.log("fun call")
-    // const displayName = user.displayName;
-    // var displayName = new String("hello");
-    console.log(displayName)
-    //document.getElementById('orgname').innerHTML = displayName;
-    // console.log(displayName);
-
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-}
-
-*/
+    else {
+      // User is signed out.
+    }
+  })

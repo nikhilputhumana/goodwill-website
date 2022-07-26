@@ -95,7 +95,7 @@ function registerorg() {
   if (validate_email(email) == false || validate_password(password) == false) {
     alert('Invalid Email or Password')
     return
-  }
+  } 
 
   if (validate_phone(phone) == false) {
     alert('Invalid Phone number')
