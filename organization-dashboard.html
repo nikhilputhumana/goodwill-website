@@ -104,14 +104,24 @@
                     <tr>
                         <td>Pin code:</td>
                         <td id="fpin" class="ps-3"></td>
-                    </tr>    
+                    </tr>
                 </table>
 
 
             </div>
             <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-secondary" id="closeme" data-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-danger" id="faccept" data-dismiss="modal">Accept and Delete Data</button>
+                <div class="row">
+                    <div class="col-md-7">
+                        <p class="text-danger footer-text">Please delete the data only after confirming with the donor
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-danger" id="faccept" data-dismiss="modal">Accept and Delete
+                            Data</button>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -165,9 +175,16 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="caccept" data-dismiss="modal">Accept and Delete
-                    Data</button>
-                <!-- <button type="button" class="btn btn-secondary" id="ccloseme" data-dismiss="modal">Close</button> -->
+                <div class="row">
+                    <div class="col-md-7">
+                        <p class="text-danger footer-text">Please delete the data only after confirming with the donor
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-danger" id="caccept" data-dismiss="modal">Accept and Delete
+                            Data</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -190,7 +207,7 @@
                                 <th>Quantity</th>
                                 <th>Manufacturing date</th>
                                 <th>Expiry date</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
                                 <th></th>
                             </tr>
                         </thead>
@@ -214,7 +231,7 @@
                     let td4 = document.createElement('td');
                     let td5 = document.createElement('td');
                     let td6 = document.createElement('td');
-                    let td66 = document.createElement('td');
+                    /// let td66 = document.createElement('td');
                     let td7 = document.createElement('td');
 
                     //---- For Modal --------
@@ -251,7 +268,7 @@
                     td4.innerHTML = quantity;
                     td5.innerHTML = mfgdate;
                     td6.innerHTML = expdate;
-                    td66.innerHTML = "<b><i>" + status + "</i></b>";
+                    // td66.innerHTML = "<b><i>" + status + "</i></b>";
                     td7.innerHTML = "<button class=\"btn btn-primary idHere\">View details</button>";
 
                     trow.appendChild(td1);
@@ -259,14 +276,15 @@
                     trow.appendChild(td4);
                     trow.appendChild(td5);
                     trow.appendChild(td6);
-                    trow.appendChild(td66);
+                    // trow.appendChild(td66);
+                    trow.appendChild(td7);
+                    /*
                     if (status == "available") {
                         trow.appendChild(td7);
                     }
-
+                    */
 
                     tbody.appendChild(trow);
-
 
                     //---- Adding Button -----
                     td7.addEventListener("click", function () {
@@ -281,30 +299,29 @@
                             modal.style.display = "none";
                         }
 
+                        /*  UPDATE FUNCTION 
+                        faccept.onclick = async function () {
 
-                        faccept.onclick = async function () {  
-                                                      
-                            const res = await firebase.database().ref('food/'+mykey).update({ 
-                                status:"unavailable"
+                            const res = await firebase.database().ref('food/' + mykey).update({
+                                status: "unavailable"
                             })
-                            console.log("res = "+res)
-                            
-                            modal.style.display = "none";
-                            location.reload();
-                        } 
-
-                        /*  DELETE FUNCTION 
-                        faccept.onclick = function () {
-                            firebase.database().ref('food/' + mykey).remove().then(() => {
-                                alert("Deleted");
-                            }).catch((error) => {
-                                console.error("Error removing document: ", error);
-                            });
+                            console.log("res = " + res)
 
                             modal.style.display = "none";
                             location.reload();
                         }
                         */
+                        
+                        faccept.onclick = function () {
+                            firebase.database().ref('food/' + mykey).remove().then(() => {
+                                modal.style.display = "none";
+                                location.reload();
+                                alert("Deleted");
+                            }).catch((error) => {
+                                console.error("Error removing document: ", error);
+                            });
+                        }
+                        
 
 
                         //----- For Food modal --------
@@ -389,7 +406,7 @@
                                 <th>Gender</th>
                                 <th>Quantity</th>
                                 <th>Size</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
                                 <th></th>
                             </tr>
                         </thead>
@@ -405,13 +422,13 @@
 
                 function AddItemToclothTable(gender, clothitem, quantity, size, name, contact, address, pin, key, status) {
                     let ttrow = document.createElement('tr');
-                    
+
                     let ttd1 = document.createElement('td');
                     let ttd2 = document.createElement('td');
                     let ttd3 = document.createElement('td');
                     let ttd4 = document.createElement('td');
                     let ttd5 = document.createElement('td');
-                    let ttd6 = document.createElement('td');
+                    // let ttd6 = document.createElement('td');
                     let td7 = document.createElement('td');
 
                     //---- For Modal --------
@@ -430,7 +447,7 @@
                     ttd3.innerHTML = clothitem;
                     ttd4.innerHTML = quantity;
                     ttd5.innerHTML = size;
-                    ttd6.innerHTML = "<b><i>" + status + "</i></b>";
+                    // ttd6.innerHTML = "<b><i>" + status + "</i></b>";
                     td7.innerHTML = "<button class=\"btn btn-primary\">View details</button>";
 
                     var cmykey = key;
@@ -440,10 +457,13 @@
                     ttrow.appendChild(ttd2);
                     ttrow.appendChild(ttd4);
                     ttrow.appendChild(ttd5);
-                    ttrow.appendChild(ttd6);
+                    //  ttrow.appendChild(ttd6);
+                    ttrow.appendChild(td7);
+                    /*
                     if (status == "available") {
                         ttrow.appendChild(td7);
                     }
+                    */
 
                     ttbody.appendChild(ttrow);
 
@@ -455,18 +475,21 @@
 
                         modal.style.display = "block";
 
-                        span.onclick = function () {                    
+                        span.onclick = function () {
                             modal.style.display = "none";
-                        }                    
+                        }
 
-                        caccept.onclick = async function () {
-                            console.log("key is ",cmykey)
-                            const res = await firebase.database().ref('clothes/' + cmykey).update({
-                                status: "unavailable"
-                            })
-                            // console.log("res is ", res)
-                            modal.style.display = "none";
-                            location.reload();
+                        caccept.onclick = function () {
+                            
+                            firebase.database().ref('clothes/' + cmykey).remove().then(() => {
+                                modal.style.display = "none";
+                                location.reload();
+                                alert("Deleted");
+                            }).catch((error) => {
+                                console.error("Error removing document: ", error);
+                            });
+
+                            
                         }
 
                         //----- For modal --------
