@@ -66,7 +66,8 @@ function clothsubmit() {
     
       saveMessage( id2, gender1, item1, quantity1, size1, cname1, cnumber1, caddress1, cpincode1);  // 2nd: usermail,
       alert("Data added");
-      document.getElementById('clothForm').reset();
+      // document.getElementById('clothForm').reset();
+      location.reload();
     }
     
     // Function to get get form values
@@ -132,7 +133,8 @@ function foodsubmit() {
     
       saveMessage(  id1, foo1, item1, quantity1, mandate1, mandtime1, expdate1, exptime1, fname1, fnumber1, faddress1, fpincode1); // 1st: usermail,
       alert("Data added");
-      document.getElementById('foodForm').reset();
+      // document.getElementById('foodForm').reset();
+      location.reload();
     }
     
     // Function to get form values
