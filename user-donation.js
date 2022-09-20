@@ -1,3 +1,24 @@
+function MDate() {
+  var UserDate = document.getElementById("mandate").value;
+  var ToDate = new Date();
+  if (new Date(UserDate).getTime() >= ToDate.getTime()) {
+        alert("The Date must be Lesser or Equal to today date");
+        return false;
+   }
+  return true;
+}
+
+function EDate() {
+  var UserDate = document.getElementById("expdate").value;
+  var ToDate = new Date();
+  if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+        alert("The Date must be Bigger or Equal to today date");
+        return false;
+   }
+  return true;
+}
+
+
 //connecting with firebase
 const firebaseConfig = {
   apiKey: "AIzaSyD_INXx7IpF9b_zy-tWoVRmfV6Zg4YUge4",
@@ -81,7 +102,7 @@ function clothsubmit() {
       document.getElementById('clothForm').reset();
       // location.reload();
     }
-    
+
   }
 
   // Function to get get form values
