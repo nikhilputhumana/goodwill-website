@@ -1,14 +1,15 @@
 //connecting with firebase
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
-  authDomain: "goodwill-e7efe.firebaseapp.com",
-  databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "goodwill-e7efe",
-  storageBucket: "goodwill-e7efe.appspot.com",
-  messagingSenderId: "146109014734",
-  appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
-  measurementId: "G-T98YNWQCXP"
+  apiKey: "AIzaSyD_INXx7IpF9b_zy-tWoVRmfV6Zg4YUge4",
+  authDomain: "goodwill-new.firebaseapp.com",
+  databaseURL: "https://goodwill-new-default-rtdb.firebaseio.com",
+  projectId: "goodwill-new",
+  storageBucket: "goodwill-new.appspot.com",
+  messagingSenderId: "604955362561",
+  appId: "1:604955362561:web:30c1a6adad63d8ae0c4700",
+  measurementId: "G-KR9X6Y49CT"
 };
 
 
@@ -102,6 +103,11 @@ function registerorg() {
     return
   }
 
+  if (validate_pin(pincode)) {
+    alert('Invalid Pin Code')
+    return
+  }
+
   if (validate_field(address && inputName && district && pincode && registernum) == false) {
     alert('Fill out the missing fields!')
     return
@@ -183,7 +189,15 @@ function validate_phone(num) {
     return false
   }
 
-  if (num.length < 10) {
+  if (num.length < 10 && num.length > 13) {
+    return false
+  } else {
+    return true
+  }
+}
+
+function validate_pin(pin) {
+  if (pin.length != 6) {
     return false
   } else {
     return true

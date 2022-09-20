@@ -20,7 +20,7 @@
 </head>
 
 
-<!------------------------------Start of page body--------------------------------->
+<!-- ----------------------------Start of page body------------------------------- -->
 
 <body>
     <div>
@@ -50,7 +50,7 @@
     </div>
 
 
-    <!--------------------- Food Modal --------------------->
+    <!- -------------------- Food Modal ------------------- -->
     <div class="modal1" id="foodModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -127,7 +127,7 @@
     </div>
 
 
-    <!------------------- Cloth Modal --------------------------->
+    <!- ------------------ Cloth Modal ------------------------- -->
 
     <div class="modal1" id="clothModal">
         <div class="modal-content">
@@ -189,12 +189,12 @@
         </div>
     </div>
 
-    <!--------------------------------------------------------------------------->
+    <!-- ----------------------------------------------------------------------- -->
 
     <div class="container">
         <div class="row">
 
-            <!--------------------------Food Table------------------------------------->
+            <!-- ------------------------Food Table----------------------------------- -->
             <div class="col-md-12 tble" id="tablefood">
                 <h1 class="m-4 subhead">Food items listed near you</h1>
 
@@ -249,19 +249,58 @@
 
                     var mykey = key;
 
+                    // ---Deleting expired items---
+                    var ex = exptime;
+                    var tod = new Date();
+                    // var todTime = tod.toLocaleTimeString();
+                    function formatDate(date) {
+                        var d = new Date(date),
+                            month = '' + (d.getMonth() + 1),
+                            day = '' + d.getDate(),
+                            year = d.getFullYear();
 
-                    /*       -------- DONOT DELETE ----------
-                    function TDate() {
-                        var UserDate = document.getElementById("fexpd");     // .value;
-                        var ToDate = new Date();
+                        if (month.length < 2)
+                            month = '0' + month;
+                        if (day.length < 2)
+                            day = '0' + day;
 
-                        if (new Date(UserDate).getTime() <= ToDate.getTime()) {
-                            alert("The Date must be Bigger or Equal to today date");
-                            return false;
-                        }
-                        return true;
+                        return [year, month, day].join('-');
                     }
-                    */
+
+                    var todDate = formatDate(tod);
+
+                    function checkTime(i) {
+                        if (i < 10) {
+                            i = "0" + i;
+                        }
+                        return i;
+                    }
+
+                    
+                        
+                        var h = tod.getHours();
+                        var m = tod.getMinutes();
+
+                        // add a zero in front of numbers<10
+                        m = checkTime(m);
+                        
+                        var todTime = h + ":" + m ;
+                        var comp = exptime.localeCompare(todTime);
+
+                        // console.log("Comp = ", comp);
+
+/*
+                    console.log("Expiry date ", expdate);
+                    console.log("Today's date ", todDate); */
+                    // console.log("Expiry time ", exptime); 
+                    // console.log("Time now ", todTime);
+
+                    if (expdate < todDate && comp == '-1') {   // && exptime < todTime
+                        console.log("Delete data");
+                    }
+                    else {
+                        console.log("Donot delete");
+                    }
 
                     td1.innerHTML = ++slno;
                     td3.innerHTML = fooditem;
@@ -311,7 +350,7 @@
                             location.reload();
                         }
                         */
-                        
+
                         faccept.onclick = function () {
                             firebase.database().ref('food/' + mykey).remove().then(() => {
                                 modal.style.display = "none";
@@ -321,7 +360,7 @@
                                 console.error("Error removing document: ", error);
                             });
                         }
-                        
+
 
 
                         //----- For Food modal --------
@@ -354,17 +393,17 @@
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
 
 
+                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
                 const firebaseConfig = {
-                    apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
-                    authDomain: "goodwill-e7efe.firebaseapp.com",
-                    databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
-                    projectId: "goodwill-e7efe",
-                    storageBucket: "goodwill-e7efe.appspot.com",
-                    messagingSenderId: "146109014734",
-                    appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
-                    measurementId: "G-T98YNWQCXP"
+                    apiKey: "AIzaSyD_INXx7IpF9b_zy-tWoVRmfV6Zg4YUge4",
+                    authDomain: "goodwill-new.firebaseapp.com",
+                    databaseURL: "https://goodwill-new-default-rtdb.firebaseio.com",
+                    projectId: "goodwill-new",
+                    storageBucket: "goodwill-new.appspot.com",
+                    messagingSenderId: "604955362561",
+                    appId: "1:604955362561:web:30c1a6adad63d8ae0c4700",
+                    measurementId: "G-KR9X6Y49CT"
                 };
-
                 // Initialize Firebase
                 const app = initializeApp(firebaseConfig);
 
@@ -375,7 +414,6 @@
 
                 function GetAllDataOnce() {
                     const dbRef = ref(db);
-
                     get(child(dbRef, "food"))
                         .then((snapshot) => {
                             var food = [];
@@ -480,7 +518,7 @@
                         }
 
                         caccept.onclick = function () {
-                            
+
                             firebase.database().ref('clothes/' + cmykey).remove().then(() => {
                                 modal.style.display = "none";
                                 location.reload();
@@ -489,7 +527,7 @@
                                 console.error("Error removing document: ", error);
                             });
 
-                            
+
                         }
 
                         //----- For modal --------
@@ -516,18 +554,18 @@
 
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
 
-                const firebaseConfig2 = {
-                    apiKey: "AIzaSyB2JGamsis5w8M9pzuoWk1VboTrpfgYpdE",
-                    authDomain: "goodwill-e7efe.firebaseapp.com",
-                    databaseURL: "https://goodwill-e7efe-default-rtdb.asia-southeast1.firebasedatabase.app",
-                    projectId: "goodwill-e7efe",
-                    storageBucket: "goodwill-e7efe.appspot.com",
-                    messagingSenderId: "146109014734",
-                    appId: "1:146109014734:web:fb136fe8563bcefd52e69f",
-                    measurementId: "G-T98YNWQCXP"
+                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                const firebaseConfig = {
+                    apiKey: "AIzaSyD_INXx7IpF9b_zy-tWoVRmfV6Zg4YUge4",
+                    authDomain: "goodwill-new.firebaseapp.com",
+                    databaseURL: "https://goodwill-new-default-rtdb.firebaseio.com",
+                    projectId: "goodwill-new",
+                    storageBucket: "goodwill-new.appspot.com",
+                    messagingSenderId: "604955362561",
+                    appId: "1:604955362561:web:30c1a6adad63d8ae0c4700",
+                    measurementId: "G-KR9X6Y49CT"
                 };
-
-                const capp = initializeApp(firebaseConfig2);
+                const capp = initializeApp(firebaseConfig);
 
                 import { getDatabase, ref, child, onValue, get }
                     from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
@@ -537,7 +575,7 @@
 
                 function GetAllclothDataOnce() {
                     const dbRef = ref(cdb);
-
+                    
                     get(child(dbRef, "clothes"))
                         .then((snapshot) => {
                             var clothes = [];
@@ -569,7 +607,7 @@
 
         </div>
 
-        <!---------------------Script Codes------------------------------------------>
+        <!-- -------------------Script Codes---------------------------------------- -->
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
