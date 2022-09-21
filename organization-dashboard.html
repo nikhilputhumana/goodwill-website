@@ -317,6 +317,7 @@
                                 }
 
                                 
+
                                 // ---Deleting expired items---
                                 var ex = exptime;
                                 var tod = new Date();
@@ -355,7 +356,14 @@
 
                                 if (expdate < todDate && comp == '-1') {   // && exptime < todTime
                                     console.log("Delete data");
-                                    deletedata();
+                                    // -- deleting expired data --
+                                    firebase.database().ref('food/' + mykey).remove().then(() => {
+                                        console.log("Expired item deleted")
+                                        // location.reload();
+                                        // alert("Deleted");
+                                    }).catch((error) => {
+                                        console.error("Error removing document: ", error);
+                                    });
                                 }
                                 else {
                                     console.log("Donot delete");
