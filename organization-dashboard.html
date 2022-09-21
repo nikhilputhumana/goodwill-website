@@ -253,57 +253,7 @@
 
                             var mykey = key;
 
-                            // ---Deleting expired items---
-                            var ex = exptime;
-                            var tod = new Date();
-                            // var todTime = tod.toLocaleTimeString();
-                            function formatDate(date) {
-                                var d = new Date(date),
-                                    month = '' + (d.getMonth() + 1),
-                                    day = '' + d.getDate(),
-                                    year = d.getFullYear();
-
-                                if (month.length < 2)
-                                    month = '0' + month;
-                                if (day.length < 2)
-                                    day = '0' + day;
-
-                                return [year, month, day].join('-');
-                            }
-
-                            var todDate = formatDate(tod);
-
-                            function checkTime(i) {
-                                if (i < 10) {
-                                    i = "0" + i;
-                                }
-                                return i;
-                            }
-
-                            var h = tod.getHours();
-                            var m = tod.getMinutes();
-
-                            // add a zero in front of numbers<10
-                            m = checkTime(m);
-
-                            var todTime = h + ":" + m;
-                            var comp = exptime.localeCompare(todTime);
-
-                            // console.log("Comp = ", comp);
-
-
-                            // console.log("Expiry date ", expdate);
-                            // console.log("Today's date ", todDate); 
-                            // console.log("Expiry time ", exptime); 
-                            // console.log("Time now ", todTime);
-
-                            if (expdate < todDate && comp == '-1') {   // && exptime < todTime
-                                console.log("Delete data");
-                                deletedata();
-                            }
-                            else {
-                                console.log("Donot delete");
-                            }
+                            
 
                             td1.innerHTML = ++slno;
                             td3.innerHTML = fooditem;
@@ -354,6 +304,8 @@
                                 }
                                 */
 
+                                
+                                // DELETE FUNCTION
                                 faccept.onclick = function deletedata() {
                                     firebase.database().ref('food/' + mykey).remove().then(() => {
                                         modal.style.display = "none";
@@ -364,6 +316,50 @@
                                     });
                                 }
 
+                                
+                                // ---Deleting expired items---
+                                var ex = exptime;
+                                var tod = new Date();
+                                // var todTime = tod.toLocaleTimeString();
+                                function formatDate(date) {
+                                    var d = new Date(date),
+                                        month = '' + (d.getMonth() + 1),
+                                        day = '' + d.getDate(),
+                                        year = d.getFullYear();
+
+                                    if (month.length < 2)
+                                        month = '0' + month;
+                                    if (day.length < 2)
+                                        day = '0' + day;
+
+                                    return [year, month, day].join('-');
+                                }
+
+                                var todDate = formatDate(tod);
+
+                                function checkTime(i) {
+                                    if (i < 10) {
+                                        i = "0" + i;
+                                    }
+                                    return i;
+                                }
+
+                                var h = tod.getHours();
+                                var m = tod.getMinutes();
+
+                                // add a zero in front of numbers<10
+                                m = checkTime(m);
+
+                                var todTime = h + ":" + m;
+                                var comp = exptime.localeCompare(todTime);
+
+                                if (expdate < todDate && comp == '-1') {   // && exptime < todTime
+                                    console.log("Delete data");
+                                    deletedata();
+                                }
+                                else {
+                                    console.log("Donot delete");
+                                }
 
 
                                 //----- For Food modal --------
