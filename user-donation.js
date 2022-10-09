@@ -1,7 +1,7 @@
 function MDate() {
   var UserDate = document.getElementById("mandate").value;
   var ToDate = new Date();
-  if (new Date(UserDate).getTime() >= ToDate.getTime()) {
+  if (new Date(UserDate).getTime() > ToDate.getTime()) {
         alert("The Date must be Lesser or Equal to today date");
         return false;
    }
@@ -11,7 +11,7 @@ function MDate() {
 function EDate() {
   var UserDate = document.getElementById("expdate").value;
   var ToDate = new Date();
-  if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+  if (new Date(UserDate).getTime() < ToDate.getTime()) {
         alert("The Date must be Bigger or Equal to today date");
         return false;
    }
