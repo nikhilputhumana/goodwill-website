@@ -23,6 +23,7 @@ You can view the website by clicking [here](https://nikhilputhumana.github.io/go
 
 * HTML
 * CSS
+* Bootstrap
 * Javascript
 * Firebase (for authentication and storage)
 
