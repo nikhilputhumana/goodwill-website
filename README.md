@@ -14,7 +14,7 @@ You can view the website by clicking [here](https://nikhilputhumana.github.io/go
 
 * Organizations can view the items donated by the Users.
 
-![screenshot](assets/screenshots/Screenshot 2022-10-09 152301.png)
+![screenshot]("assets/screenshots/Screenshot 2022-10-09 152301.png")
 
 * Organizations can use these details to connect with the user and after confirming the donation to be transferred, the organization can use the Accept and Delete Data button to delete the corresponding data from the website.
 
